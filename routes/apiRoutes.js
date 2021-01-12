@@ -7,6 +7,7 @@ module.exports = function(app) {
         fs.readFile("db/db.json", "utf8", (err, data) => {
             if (err) throw err;
             notes = JSON.parse(data);
+            console.log(notes);
             return res.json(notes);
         });
     });
@@ -18,24 +19,18 @@ module.exports = function(app) {
             let notes = JSON.parse(data);
             let currentNoteId;
 
-            if (notes.length == 0) {
-                currentNoteId = -1;
-            }
-
-            else {
-                for (i=0; i<notes.length; i++) {
-                    notes[i].id = i;
-                    currentNoteId = notes[i].id;
-                }
-            }
-
             let addNote = {
-                id: currentNoteId + 1,
+                id: currentNoteId,
                 title: req.body.title,
                 text: req.body.text
             };
 
             notes.push(addNote);
+
+            for (i=0; i<notes.length; i++) {
+                notes[i].id = i+1;
+                currentNoteId = notes[i].id;
+            }
 
             fs.writeFile("db/db.json", JSON.stringify(notes), "utf8", (err, data) => {
                 if (err) throw err;
@@ -63,7 +58,7 @@ module.exports = function(app) {
             notes = filteredNotes;
 
             for (i=0; i<notes.length; i++) {
-                notes[i].id = i;
+                notes[i].id = i+1;
             }
 
             fs.writeFile("db/db.json", JSON.stringify(notes), "utf8", (err, data) => {
