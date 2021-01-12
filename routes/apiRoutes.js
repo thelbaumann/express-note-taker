@@ -7,7 +7,6 @@ module.exports = function(app) {
         fs.readFile("db/db.json", "utf8", (err, data) => {
             if (err) throw err;
             notes = JSON.parse(data);
-            console.log(notes);
             return res.json(notes);
         });
     });
@@ -19,9 +18,15 @@ module.exports = function(app) {
             let notes = JSON.parse(data);
             let currentNoteId;
 
-            for (i=0; i<notes.length; i++) {
-                notes[i].id = i;
-                currentNoteId = notes[i].id;
+            if (notes.length == 0) {
+                currentNoteId = -1;
+            }
+
+            else {
+                for (i=0; i<notes.length; i++) {
+                    notes[i].id = i;
+                    currentNoteId = notes[i].id;
+                }
             }
 
             let addNote = {
@@ -32,17 +37,42 @@ module.exports = function(app) {
 
             notes.push(addNote);
 
-            console.log(notes);
-
             fs.writeFile("db/db.json", JSON.stringify(notes), "utf8", (err, data) => {
                 if (err) throw err;
-                console.log("a new note has been added!");
             });
 
         });
 
         res.send(notes);
 
+    });
+
+    app.delete("/api/notes/:id", function (req, res) {
+        fs.readFile("db/db.json", "utf8", (err, data) => {
+            if (err) throw err;
+
+            let notes = JSON.parse(data);
+            
+            let deleteId = parseInt(req.params.id);
+
+            let filteredNotes = notes.filter(function(note) {
+                return note.id !== deleteId;
+            });
+
+            notes = [];
+            notes = filteredNotes;
+
+            for (i=0; i<notes.length; i++) {
+                notes[i].id = i;
+            }
+
+            fs.writeFile("db/db.json", JSON.stringify(notes), "utf8", (err, data) => {
+                if (err) throw err;
+            });
+
+        });
+
+        res.json(notes);
     });
 
 
