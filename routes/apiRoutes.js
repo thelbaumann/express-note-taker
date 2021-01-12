@@ -29,7 +29,6 @@ module.exports = function(app) {
 
             for (i=0; i<notes.length; i++) {
                 notes[i].id = i+1;
-                currentNoteId = notes[i].id;
             }
 
             fs.writeFile("db/db.json", JSON.stringify(notes), "utf8", (err, data) => {
