@@ -1,12 +1,14 @@
 const fs = require("fs");
+let notes = [];
 
 module.exports = function(app) {
 
     app.get("/api/notes", function(req, res) {
         fs.readFile("db/db.json", "utf8", (err, data) => {
             if (err) throw err;
-            let notes = data;
-            res.json(JSON.parse(notes));
+            notes = JSON.parse(data);
+            console.log(notes);
+            return res.json(notes);
         });
     });
 
@@ -22,30 +24,27 @@ module.exports = function(app) {
                 currentNoteId = notes[i].id;
             }
 
-            let newNote = {
+            let addNote = {
                 id: currentNoteId + 1,
                 title: req.body.title,
                 text: req.body.text
             };
 
-            notes.push(newNote);
+            notes.push(addNote);
 
             console.log(notes);
 
-            fs.writeFileSync("db/db.json", JSON.stringify(notes), "utf8", (err, data) => {
+            fs.writeFile("db/db.json", JSON.stringify(notes), "utf8", (err, data) => {
                 if (err) throw err;
                 console.log("a new note has been added!");
-            })
-    
-            res.send(notes);
+            });
 
         });
 
-        
+        res.send(notes);
 
     });
 
-    
 
 
-};
+}
