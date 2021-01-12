@@ -1,5 +1,4 @@
 const fs = require("fs");
-let notes = [];
 
 module.exports = function(app) {
 
