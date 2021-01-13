@@ -1,5 +1,5 @@
 # Node.js Express Note Taker Application [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-This is an Express-driven application built as a project for my fullstack coding bootcamp. It allows to the user to create, view, and delete notes from the web application. This application uses express, node.js, and API functionality to allow the data to persist with the user beyond one browser session. This application can be found deployed at [Heroku](https://dashboard.heroku.com/apps/warm-tundra-71017).
+This is an Express-driven application built as a project for my fullstack coding bootcamp. It allows to the user to create, view, and delete notes from the web application. This application uses express, node.js, and API functionality to allow the data to persist with the user beyond one browser session. This application can be found deployed at [Heroku](https://warm-tundra-71017.herokuapp.com/).
 
 ## Table of Contents
 
