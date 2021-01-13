@@ -53,8 +53,6 @@ OR launch the app through the heroku link found [here](https://warm-tundra-71017
 
 The main function of this application comes from three folders and one file on the root level of the application. The first folder, db, contains the db.json file that functions as the application's own API, allowing notes to be deleted, added, stored, and viewed to the user upon their command. The second folder is Public, which contains the main CSS, JS, and HTML files (those that were provided to us by the assignment). The third folder is Routing, which contains the Express routes I wrote for both the API requests as well as the HTML page changes. The fourth root level functionality comes from the server.js file, which sets up the server to work with localhost or Heroku, as well as requiring the Routing paths built in the self-titled folder.
 
-![File Structure](https://github.com/thelbaumann/team-generator/blob/main/assets/file-structure.png)
-
 
  #### How to Use It
  
