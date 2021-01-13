@@ -49,12 +49,12 @@ OR launch the app through the heroku link found [here](https://warm-tundra-71017
 
 ## Walkthrough
 
-### How Its Working
+### How It's Working
 
 The main function of this application comes from three folders and one file on the root level of the application. The first folder, db, contains the db.json file that functions as the application's own API, allowing notes to be deleted, added, stored, and viewed to the user upon their command. The second folder is Public, which contains the main CSS, JS, and HTML files (those that were provided to us by the assignment). The third folder is Routing, which contains the Express routes I wrote for both the API requests as well as the HTML page changes. The fourth root level functionality comes from the server.js file, which sets up the server to work with localhost or Heroku, as well as requiring the Routing paths built in the self-titled folder.
 
 
- #### How to Use It
+ ### How to Use It
  
 ![Gif Walkthrough of Application](https://media.giphy.com/media/O3D1vaPYA8Gta7cx6q/giphy.gif).
 
